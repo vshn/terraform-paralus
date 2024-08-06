@@ -81,14 +81,13 @@ Needs to be added to `versions.tf`
 Neeeds to be added to `.gitlab-ci.yml`
 
 ```hcl
-    TF_VAR_PARALUS_API_KEY: $PARALUS_API_KEY
-    TF_VAR_PARALUS_API_SECRET: $PARALUS_API_SECRET
+TF_VAR_PARALUS_API_KEY: $PARALUS_API_KEY
+TF_VAR_PARALUS_API_SECRET: $PARALUS_API_SECRET
 ```
 
 Needs to be added to `.tfvars`
 
 ```hcl
-
 paralus_kubernetes_provider = "foo"
 paralus_project_name        = "bar"
 ```
