@@ -39,7 +39,56 @@ module "paralus" {
   paralus_project_name = var.paralus_project_name
 }
 
-output "paralus" {
-  value = module.paralus
+output "paralus_bootstrap_file" {
+  value = module.paralus.paralus_bootstrap_file
 }
+```
+
+Needs to be added to `variables.tf`
+
+```hcl
+variable "PARALUS_API_KEY" {
+  description = "API Key for Paralus"
+  type        = string
+}
+
+variable "PARALUS_API_SECRET" {
+  description = "API Secret for Paralus"
+  type        = string
+}
+
+variable "paralus_kubernetes_provider" {
+  description = "Kubernetes Provider, for instance GKE or EKS"
+  type        = string
+}
+
+variable "paralus_project_name" {
+  description = "Name of the Paralus project"
+  type        = string
+  default     = ""
+}
+```
+
+Needs to be added to `versions.tf`
+
+```hcl
+    paralus = {
+      source  = "iherbllc/paralus"
+      version = "0.0.48"
+    }
+```
+
+Neeeds to be added to `.gitlab-ci.yml`
+
+```hcl
+    TF_VAR_PARALUS_API_KEY: $PARALUS_API_KEY
+    TF_VAR_PARALUS_API_SECRET: $PARALUS_API_SECRET
+```
+
+Needs to be added to `.tfvars`
+
+```hcl
+
+paralus_kubernetes_provider = "foo"
+paralus_project_name        = "bar"
 ```
