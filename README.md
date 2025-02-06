@@ -3,7 +3,6 @@
 This module does the following:
 
 * Create a Cluster in Paralus
-* Output bootstrap URL to be applied on the cluster
 
 ## Preparation
 
@@ -37,10 +36,6 @@ module "paralus" {
   cluster_name         = terraform.workspace
   kubernetes_provider  = var.paralus_kubernetes_provider
   paralus_project_name = var.paralus_project_name
-}
-
-output "paralus_bootstrap_file" {
-  value = module.paralus.paralus_bootstrap_file
 }
 ```
 
